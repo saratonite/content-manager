@@ -1,0 +1,16 @@
+{
+  "name": "scrapi-next-cms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "backend":"yarn workspace backend"
+  },
+  "keywords": [],
+  "author": "Sarath",
+  "license": "ISC"
+}
