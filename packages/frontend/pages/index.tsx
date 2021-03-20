@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import BaseLayout from "../components/Layout/BaseLayout";
 import { client } from "../lib/httpClient";
 
 const index = () => {
@@ -21,15 +22,16 @@ const index = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Posts</h1>
-      {state.data.map((post) => (
-        <div key={post.id}>
-          <h2>{post.title}</h2>
-          <p>{post.body}</p>
-        </div>
-      ))}
-    </div>
+    <BaseLayout>
+      <div>
+        {state.data.map((post) => (
+          <div key={post.id}>
+            <h2>{post.title}</h2>
+            <p>{post.body}</p>
+          </div>
+        ))}
+      </div>
+    </BaseLayout>
   );
 };
 
