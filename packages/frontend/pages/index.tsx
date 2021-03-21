@@ -1,36 +1,27 @@
-import React, { useState, useEffect, useCallback } from "react";
-import BaseLayout from "../components/Layout/BaseLayout";
-import { client } from "../lib/httpClient";
+import React from "react";
+import useSwr from "swr";
+import { fetcher, appendURL } from "@lib/httpClient";
+import BaseLayout from "@components/Layout/BaseLayout";
 
 const index = () => {
-  const [state, setState] = useState({
-    data: [],
-  });
-  const fetchPosts = useCallback(() => {
-    client
-      .get(`/posts`)
-      .then((res) => {
-        setState({ data: res.data });
-      })
-      .catch((error) => {
-        console.log(`Error `, error);
-      });
-  }, []);
-
-  useEffect(() => {
-    fetchPosts();
-  }, []);
-
+  const { data, error } = useSwr("/home-page", fetcher);
   return (
     <BaseLayout>
-      <div>
-        {state.data.map((post) => (
-          <div key={post.id}>
-            <h2>{post.title}</h2>
-            <p>{post.body}</p>
+      {!data && <p>Loading..</p>}
+      {data && (
+        <div>
+          <div className="">
+            <img
+              className="mt-6 rounded-md shadow h-60 w-full object-cover object-center "
+              src={appendURL(data.cover.url)}
+            />
           </div>
-        ))}
-      </div>
+          <div className="mt-6">
+            <h1 className="text-4xl">{data.title}</h1>
+            <p className="text-xl">{data.description}</p>
+          </div>
+        </div>
+      )}
     </BaseLayout>
   );
 };
