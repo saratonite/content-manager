@@ -5,4 +5,5 @@ export interface Post {
   body: string;
   published_at: string;
   cover: Image;
+  slug: string;
 }

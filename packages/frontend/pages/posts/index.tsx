@@ -1,11 +1,11 @@
 import React from "react";
 import useSWR from "swr";
 import BaseLayout from "@components/Layout/BaseLayout";
-import { client, fetcher } from "@lib/httpClient";
+import { useRequest, fetcher } from "@lib/httpClient";
 import PostListItem from "@components/posts/PostListItem";
 
 const PostsPage = () => {
-  const { data, error } = useSWR("/posts", fetcher);
+  const { data, error } = useRequest("/posts");
   return (
     <BaseLayout>
       {data && (

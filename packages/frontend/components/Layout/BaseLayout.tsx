@@ -5,7 +5,7 @@ const BaseLayout: React.FC<{ children: React.ReactNode }> = ({
   children = null,
 }) => {
   return (
-    <div className=" max-w-3xl w-full mx-auto">
+    <div className=" max-w-3xl w-full mx-auto bg-white flex flex-col h-full">
       <div className="bg-indigo-500 text-white px-2 py-3 flex  items-center">
         <h1 className="text-2xl font-thin"> Content Manager</h1>
         <nav className="flex ml-auto">
@@ -13,7 +13,7 @@ const BaseLayout: React.FC<{ children: React.ReactNode }> = ({
           <NavLink href="/posts">Posts</NavLink>
         </nav>
       </div>
-      {children}
+      <div className="flex-grow">{children}</div>
     </div>
   );
 };

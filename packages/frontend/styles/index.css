@@ -3,3 +3,9 @@
 @tailwind components;
 
 @tailwind utilities;
+
+
+html, body, #__next  {
+    @apply bg-gray-50 relative h-full
+}
+
