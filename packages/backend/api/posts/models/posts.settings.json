@@ -22,6 +22,20 @@
     "body": {
       "type": "richtext",
       "minLength": 1
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "cover": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
     }
   }
 }
