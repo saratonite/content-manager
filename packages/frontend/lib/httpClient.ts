@@ -1,7 +1,7 @@
 import axios from "axios";
 import useSWR from "swr";
 
-const API_BASE_URL: string = "http://localhost:1337";
+const API_BASE_URL: string = "/api";
 
 export const client = axios.create({
   baseURL: API_BASE_URL,

@@ -1,4 +1,5 @@
 import React from "react";
+import ReactMarkdown from "react-markdown";
 import { appendURL } from "@lib/httpClient";
 import { Post } from "@app-types";
 const PostView: React.FC<{ post: Post }> = ({ post }) => {
@@ -13,7 +14,12 @@ const PostView: React.FC<{ post: Post }> = ({ post }) => {
         </div>
       )}
       <h1 className="text-2xl text-indigo-500">{post.title}</h1>
-      <div className="text-lg text-gray-600">{post.body}</div>
+      <div className="text-lg text-gray-600">
+        <ReactMarkdown
+          transformImageUri={(url) => appendURL(url)}
+          children={post.body}
+        ></ReactMarkdown>
+      </div>
     </div>
   );
 };
